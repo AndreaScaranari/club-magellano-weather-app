@@ -10,6 +10,6 @@ export default {
 <template>
   <AppHeader />
   <main>
-    
+    <RouterView />
   </main>
 </template>

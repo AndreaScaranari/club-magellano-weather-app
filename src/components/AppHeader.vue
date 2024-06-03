@@ -13,10 +13,12 @@ export default {
 
 <template>
     <header class="flexsbc">
-        <img :src='createImagePath("club-magellano-logo.svg")' alt="Logo Club Magellano">
+        <RouterLink to="/">
+            <img :src='createImagePath("club-magellano-logo.svg")' alt="Logo Club Magellano">
+        </RouterLink>
         <ul class="flexsbc">
-            <li><a href="dashboard.html"><font-awesome-icon icon="cloud-sun" /></a></li>
-            <li><a href="settings.html"><font-awesome-icon icon="gear" /></a></li>
+            <li><RouterLink to="/"><font-awesome-icon icon="cloud-sun" /></RouterLink></li>
+            <li><RouterLink to="/settings"><font-awesome-icon icon="gear" /></RouterLink></li>
         </ul>  
     </header>
 </template>
