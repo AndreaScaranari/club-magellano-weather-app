@@ -11,5 +11,6 @@ export default createRouter({
     routes: [
         {path: '/', component: DashboardPage},
         {path: '/settings', component: SettingsPage},
+        {path: '/:pathMatch(.*)*', redirect: '/'}
     ]
 });

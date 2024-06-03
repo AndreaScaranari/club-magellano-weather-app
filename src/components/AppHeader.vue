@@ -17,8 +17,8 @@ export default {
             <img :src='createImagePath("club-magellano-logo.svg")' alt="Logo Club Magellano">
         </RouterLink>
         <ul class="flexsbc">
-            <li><RouterLink to="/"><font-awesome-icon icon="cloud-sun" /></RouterLink></li>
-            <li><RouterLink to="/settings"><font-awesome-icon icon="gear" /></RouterLink></li>
+            <li><RouterLink to="/"><font-awesome-icon icon="cloud-sun" class="page-icon"/></RouterLink></li>
+            <li><RouterLink to="/settings" ><font-awesome-icon icon="gear" class="page-icon"/></RouterLink></li>
         </ul>  
     </header>
 </template>
