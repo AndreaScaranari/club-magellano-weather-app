@@ -15,8 +15,26 @@ a {
   text-decoration: none;
 }
 
+li {
+  list-style-type: none;
+}
+
+h1,
+h2{
+  text-align: center;
+}
+
 .page-icon:hover{
   transform: scale(1.1);
+}
+
+.container{
+  width: 80%;
+  margin: 2rem auto;
+}
+
+.container > * {
+  margin: 1rem 0;
 }
 
 /* Utilities */
@@ -24,6 +42,30 @@ a {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.flexsec{
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-wrap: wrap;
+
+}
+
+.btn {
+  display: inline-block;
+  margin: 0 auto;
+  padding: 0.6rem 1rem;
+  color: white;
+  background-color: #8BC43E;
+  border-radius: 15px;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.btn:hover{
+  transform: scale(1.1);
+  background-color: #75a82d;
 }
 
 /* Header */
@@ -64,7 +106,6 @@ footer ul{
   font-size: 0.7rem;
   text-align: center;
   color: white;
-  list-style-type: none;
   gap: 2rem;
 }
 
@@ -76,33 +117,33 @@ footer ul{
 }
 
 /* Main */
-main{
-  height: 60vh;
-}
-
 h1{
-  width: 80%;
-  margin: 0 auto;
-  padding: 2rem 0;
-
-  text-align: center;
+  margin: 2rem 0;
 }
 
 .btn-container{
   text-align: center;
 }
 
-.btn {
-  display: inline-block;
-  margin: 0 auto;
-  padding: 0.6rem 1rem;
-  color: white;
-  background-color: #8BC43E;
-  border-radius: 15px;
-  transition: transform 0.3s ease;
+.meteo-icon{
+  width: 50%;
 }
 
-.btn:hover{
-  transform: scale(1.1);
-  background-color: #75a82d;
+.weatemp>*{
+  margin: 5px;
 }
+
+.temperature{
+  font-size: 3rem;
+  font-weight: 500;
+}
+
+.hours-container{
+  row-gap: 0.5rem;
+}
+
+.hours{
+  width: 25%;
+}
+
+
