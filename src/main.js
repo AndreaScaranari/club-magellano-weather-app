@@ -1,6 +1,7 @@
 import { createApp } from 'vue'
 import './style.css'
 import App from './App.vue'
+import AppLoader from './components/AppLoader.vue';
 import router from './router'
 
 // Font Awesome
@@ -13,6 +14,6 @@ library.add(faCloudSun, faGear, faChevronDown, faFacebook, faTwitter, faInstagra
 
 // Create app
 createApp(App)
-.component('font-awesome-icon', FontAwesomeIcon)
+.component('font-awesome-icon', FontAwesomeIcon, AppLoader)
 .use(router)
 .mount('#app')
