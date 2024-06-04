@@ -37,6 +37,10 @@ h2{
   margin: 1rem 0;
 }
 
+html::-webkit-scrollbar {
+  display: none;
+}
+
 /* Utilities */
 .flexsbc{
   display: flex;
@@ -149,10 +153,14 @@ h1{
 
 .hours-container{
   row-gap: 0.5rem;
+  margin: 1.5rem 0;
 }
 
 .hours{
   width: 25%;
 }
 
-
+.accordion-button{
+cursor: pointer;
+margin: 0.5rem 0;
+}

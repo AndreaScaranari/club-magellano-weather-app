@@ -10,6 +10,7 @@ export default {
   name: 'DashboardPage',
   data: () => ({
 	is5DOpen: false,
+	forecasts: [],
     dates: [],
     temps: [],
     weathers: []
@@ -51,8 +52,9 @@ export default {
     </div>
 </div>
 <div>
-	<h2>
-			<button @click="is5DOpen = !is5DOpen">Previsioni a 5 giorni</button>
+	<h2 class="accordion-button" @click="is5DOpen = !is5DOpen">
+		Previsioni a 5 giorni
+		<font-awesome-icon icon="chevron-down" />
 	</h2>
 	<ul v-show="is5DOpen">
 			<li class="flexsbc">
