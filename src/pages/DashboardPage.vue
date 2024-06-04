@@ -9,6 +9,7 @@ const url = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${l
 export default {
   name: 'DashboardPage',
   data: () => ({
+	is5DOpen: false,
     dates: [],
     temps: [],
     weathers: []
@@ -49,9 +50,57 @@ export default {
         <div class="max-min">22° / 16°</div>
     </div>
 </div>
-<ul>
-    <li></li>
-</ul>
+<div>
+	<h2>
+			<button @click="is5DOpen = !is5DOpen">Previsioni a 5 giorni</button>
+	</h2>
+	<ul v-show="is5DOpen">
+			<li class="flexsbc">
+				<div>
+					date
+				</div>
+				<div>
+					icon
+				</div>
+				<div>
+					min / max
+				</div>
+			</li>
+			<li class="flexsbc">
+				<div>
+					date
+				</div>
+				<div>
+					icon
+				</div>
+				<div>
+					min / max
+				</div>
+			</li>
+			<li class="flexsbc">
+				<div>
+					date
+				</div>
+				<div>
+					icon
+				</div>
+				<div>
+					min / max
+				</div>
+			</li>
+			<li class="flexsbc">
+				<div>
+					date
+				</div>
+				<div>
+					icon
+				</div>
+				<div>
+					min / max
+				</div>
+			</li>
+	</ul>
+</div>
 <ul class="flexsec hours-container">
         <li class="hours"><span class="btn">3:00</span></li>
         <li class="hours"><span class="btn">3:00</span></li>
