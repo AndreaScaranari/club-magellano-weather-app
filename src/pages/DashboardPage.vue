@@ -67,7 +67,7 @@ export default {
 						const date = new Date(item.dt * 1000).toLocaleString();
 						const temp = this.findTemperatureC(item.main.temp);
 						const weather = this.firstLetterUC(item.weather[0].description);
-						const pop = item.pop * 100 + "%";
+						const pop = Math.round(parseFloat(item.pop * 100)) + "%";
 						let rainMM;
 						if (item.rain) {
 							rainMM = item.rain['3h'] + "mm";
