@@ -129,24 +129,24 @@ export default {
 			</div>
 		</div>
 		<!-- Previsioni a cinque giorni -->
-		<div>
-			<h2 class="accordion-button" @click="is5DOpen = !is5DOpen">
-				Previsioni a 5 giorni
-				<font-awesome-icon icon="chevron-down" />
-			</h2>
-			<ul v-show="is5DOpen">
-				<li v-for="(forecast, index) in forecasts.slice(1, 5)" :key="index" class="flexsbc">
-					<div>
+		<div class="five-d-f">
+			<div class="flexsec" @click="is5DOpen = !is5DOpen">
+				<span class="accordion-button btn ">Previsioni a 4 giorni
+					<font-awesome-icon icon="chevron-down" /></span>
+			</div>
+			<table v-show="is5DOpen" class="accordion-table">
+				<tr v-for="(forecast, index) in forecasts.slice(1, 5)" :key="index" class="flexsbc">
+					<td class="w-20">
 						{{ forecast[0].date.slice(0, 5) }}
-					</div>
-					<div>
+					</td>
+					<td class="w-50">
 						{{ forecast[4].weather }}
-					</div>
-					<div>
+					</td>
+					<td class="w-30">
 						{{ forecast[4].max }} / {{ forecasts[1][4].min }}
-					</div>
-				</li>
-			</ul>
+					</td>
+				</tr>
+			</table>
 		</div>
 		<!-- Orari previsioni della giornata -->
 		<ul class="flexsec hours-container">
