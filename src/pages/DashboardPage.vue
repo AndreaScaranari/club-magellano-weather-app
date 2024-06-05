@@ -31,11 +31,17 @@ export default {
 		},
 		// passa alle previsioni del giorno successivo
 		nextDay() {
-			if (this.i < 4) this.i++;
+			if (this.i < 4) {
+				this.i++;
+				this.j = 0;
+			}
 		},
 		// passa alle previsioni del giorno precedente
 		previousDay() {
-			if (this.i > 0) this.i--;
+			if (this.i > 0) {
+				this.i--;
+				this.j = 0;
+			}
 		},
 		// cambia l'orario a cui le previsioni fanno riferimento
 		changeHour(index) {
@@ -105,9 +111,10 @@ export default {
 		<!-- Selettore data -->
 		<h2 class="flexsec dates">
 			<button class="btn" @click="previousDay()" :disabled="i <= 0">
-				<< </button>
-					<div>{{ forecasts[i][j].date.slice(0, 5) }}</div>
-					<button class="btn" @click="nextDay()" :disabled="i >= 4">>></button>
+				<font-awesome-icon :icon="['fas', 'angles-left']" /> </button>
+			<div class="underline">{{ forecasts[i][j].date.slice(0, 5) }}</div>
+			<button class="btn" @click="nextDay()" :disabled="i >= 4"><font-awesome-icon
+					:icon="['fas', 'angles-right']" /></button>
 		</h2>
 		<!-- Icona e main info -->
 		<div class="flexsec main-temp">
