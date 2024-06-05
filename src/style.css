@@ -6,6 +6,10 @@
 }
 
 /* Generics */
+main{
+  min-height: calc(100vh - 327px - 64px);
+}
+
 img{
   max-width: 100%;
   display: block;
@@ -142,6 +146,7 @@ footer{
 
 header{
   height: 100px;
+  font-size: 2rem;
 }
 
 header img{
@@ -156,6 +161,11 @@ header a{
   color: white;
   font-size: 1.8rem;
   transition: transform 0.3s ease;
+}
+
+.header-text{
+  display: none;
+  font-size: 1.5rem;
 }
 
 /* Footer */
@@ -187,16 +197,12 @@ footer ul{
 }
 
 /* Main */
-.wrapper{
-  height: calc(100vh - 100px - 227px - 64px);
+.btn-container{
+text-align: center;
 }
 
 h1{
   margin: 2rem 0;
-}
-
-.btn-container{
-  text-align: center;
 }
 
 /* Dates */
@@ -286,6 +292,12 @@ tr:hover {
   margin: 1rem -1rem;
 }
 
+.row-md{
+  display: none;
+  row-gap: 1rem;
+  margin: 1rem -1rem;
+}
+
 .col{
   width: 50%;
   text-align: center;
@@ -337,4 +349,49 @@ tr:hover {
     display: none;
   }
 
+  .meteo-icon{
+    width: 25%;
+  }
+
+  .flexsec.main-temp{
+    flex-wrap: nowrap;
+  }
+
+  .weatemp > *{
+    padding-left: 2.5rem;
+  }
+
+  .row-md{
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  #dboard-area{
+    display: none;
+  }
+}
+
+
+@media (min-width: 1024px) {
+  .weatemp{
+    width: 25%;
+  }
+
+  .header-text{
+    display: inline-block;
+  }
+}
+
+@media (min-width: 1200px) {
+  .weatemp{
+    width: 25%;
+  }
+
+  .container{
+    width: 70%;
+  }
+
+  .meteo-icon{
+    width: 15%;
+  }
 }

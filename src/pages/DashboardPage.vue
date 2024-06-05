@@ -45,6 +45,7 @@ export default {
 		},
 		changeDay(index) {
 			this.i = index;
+			this.j = 0;
 		},
 		// cambia l'orario a cui le previsioni fanno riferimento
 		changeHour(index) {
@@ -121,20 +122,80 @@ export default {
 		</h2>
 		<!-- Selettore data tablet / fisso -->
 		<ul class="dates-md">
-			<li v-for="(forecast, i) in forecasts" :key="i" class="btn" @click="changeDay(i)">
-				<h2>{{ forecast[0].date.slice(0, 5) }}</h2>
+			<li v-for="(forecast, index) in forecasts.slice(0, -1)" :key="index" @click="changeDay(index)">
+				<button class="btn" :disabled="i == index">
+					<h2>{{ forecast[0].date.slice(0, 5) }}</h2>
+				</button>
 			</li>
 		</ul>
 		<!-- Icona e main info -->
 		<div class="flexsec main-temp">
 			<img :src="`https://openweathermap.org/img/wn/${forecasts[i][j].icon}@2x.png`" alt="Icona Meteo"
 				class="meteo-icon">
-			<!-- <img :src='createImagePath("club-magellano-image-logo.jpg")' alt="Icona Meteo" class="meteo-icon"> -->
 			<div class="weatemp">
 				<div class="temperature">{{ forecasts[i][j].temp }}</div>
 				<div class="weather">{{ forecasts[i][j].weather }}
 				</div>
 				<div class="max-min">{{ forecasts[i][j].max }} / {{ forecasts[i][j].min }}</div>
+			</div>
+			<!-- boxes con dettagli su temperatura -->
+			<div class="row-md">
+				<!-- col precipitazioni -->
+				<div class="col">
+					<div class="card ">
+						<h4>Precipitazioni</h4>
+						<div class="flexsec">
+							<div>
+								<div>{{ forecasts[i][j].pop }}<br>
+									{{ forecasts[i][j].rainMM }}</div>
+							</div>
+							<div v-if="forecasts[i][j].pop != '0%'"><font-awesome-icon :icon="['fas', 'droplet']" />
+							</div>
+							<div v-else><font-awesome-icon :icon="['fas', 'droplet-slash']" />
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- col vento -->
+				<div class="col">
+					<div class="card ">
+						<h4>Vento</h4>
+						<div class="flexsec">
+							<div>
+								<div>{{ forecasts[i][j].windSpeed }}
+									<!-- <br>{{ forecasts[i][j].windDirection }} -->
+								</div>
+								<div class="mini-text">m/s</div>
+							</div>
+							<div>
+								<font-awesome-icon :icon="['fas', 'wind']" />
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- col umidità -->
+				<div class="col">
+					<div class="card">
+						<h4>Umidità</h4>
+						<div class="flexsec">
+							<div>{{ forecasts[i][j].humidity }}</div>
+							<div><font-awesome-icon :icon="['fas', 'gauge']" /></div>
+						</div>
+					</div>
+				</div>
+				<!-- col pressione -->
+				<div class="col">
+					<div class="card">
+						<h4>Pressione</h4>
+						<div class="flexsec">
+							<div>
+								<div>{{ forecasts[i][j].pressure }}</div>
+								<div class="mini-text">mbar</div>
+							</div>
+							<div><font-awesome-icon :icon="['fas', 'arrows-down-to-line']" /></div>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 		<!-- Previsioni a cinque giorni -->
