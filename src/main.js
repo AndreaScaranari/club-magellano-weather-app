@@ -6,11 +6,11 @@ import router from './router'
 
 // Font Awesome
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faCloudSun, faGear, faChevronDown, faAnglesLeft, faAnglesRight} from '@fortawesome/free-solid-svg-icons'
+import { faCloudSun, faGear, faChevronDown, faAnglesLeft, faAnglesRight, faDroplet, faDropletSlash, faWind, faGauge, faArrowsDownToLine} from '@fortawesome/free-solid-svg-icons'
 import { faFacebook, faTwitter, faInstagram } from '@fortawesome/free-brands-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
-library.add(faCloudSun, faGear, faChevronDown, faFacebook, faTwitter, faInstagram, faAnglesLeft, faAnglesRight)
+library.add(faCloudSun, faGear, faChevronDown, faFacebook, faTwitter, faInstagram, faAnglesLeft, faAnglesRight, faDroplet, faDropletSlash, faWind, faGauge, faArrowsDownToLine)
 
 // Create app
 createApp(App)
