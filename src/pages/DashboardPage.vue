@@ -2,6 +2,7 @@
 import axios from 'axios';
 import { store } from '../data/store';
 import AppHourSelection from '../components/AppHourSelection.vue';
+import AppBoxWeather from '../components/AppBoxWeather.vue';
 
 const apiKey = 'e74beaa658d90f730fa32959308941a4';
 const lat = 45.3097228;
@@ -10,7 +11,7 @@ const url = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${l
 
 export default {
 	name: 'DashboardPage',
-	components: { AppHourSelection },
+	components: { AppHourSelection, AppBoxWeather },
 	data: () => ({
 		store,
 		is5DOpen: false,
@@ -112,7 +113,7 @@ export default {
 </script>
 
 <template>
-	<div v-if="!store.isLoading">
+	<div v-if="!store.isLoading" class="wrapper">
 		<!-- titolo pagina -->
 		<h1>Previsioni Meteo: Lodi</h1>
 		<!-- selettore data per mobile-->
@@ -147,63 +148,7 @@ export default {
 				<div class="max-min">{{ forecasts[i][j].max }} / {{ forecasts[i][j].min }}</div>
 			</div>
 			<!-- boxes con dettagli su temperatura -->
-			<div class="row-md">
-				<!-- col precipitazioni -->
-				<div class="col">
-					<div class="card ">
-						<h4>Precipitazioni</h4>
-						<div class="flexsec">
-							<div>
-								<div>{{ forecasts[i][j].pop }}<br>
-									{{ forecasts[i][j].rainMM }}</div>
-							</div>
-							<div v-if="forecasts[i][j].pop != '0%'"><font-awesome-icon :icon="['fas', 'droplet']" />
-							</div>
-							<div v-else><font-awesome-icon :icon="['fas', 'droplet-slash']" />
-							</div>
-						</div>
-					</div>
-				</div>
-				<!-- col vento -->
-				<div class="col">
-					<div class="card ">
-						<h4>Vento</h4>
-						<div class="flexsec">
-							<div>
-								<div>{{ forecasts[i][j].windSpeed }}
-								</div>
-								<div class="mini-text">m/s</div>
-							</div>
-							<div>
-								<font-awesome-icon :icon="['fas', 'wind']" />
-							</div>
-						</div>
-					</div>
-				</div>
-				<!-- col umidità -->
-				<div class="col">
-					<div class="card">
-						<h4>Umidità</h4>
-						<div class="flexsec">
-							<div>{{ forecasts[i][j].humidity }}</div>
-							<div><font-awesome-icon :icon="['fas', 'gauge']" /></div>
-						</div>
-					</div>
-				</div>
-				<!-- col pressione -->
-				<div class="col">
-					<div class="card">
-						<h4>Pressione</h4>
-						<div class="flexsec">
-							<div>
-								<div>{{ forecasts[i][j].pressure }}</div>
-								<div class="mini-text">mbar</div>
-							</div>
-							<div><font-awesome-icon :icon="['fas', 'arrows-down-to-line']" /></div>
-						</div>
-					</div>
-				</div>
-			</div>
+			<AppBoxWeather :forecasts="forecasts" :i="i" :j="j" classA="row-md" />
 		</div>
 		<!-- previsioni a cinque giorni -->
 		<div class="five-d-f">
@@ -243,62 +188,6 @@ export default {
 		<!-- orari previsioni della giornata -->
 		<AppHourSelection :forecasts="forecasts[i]" :j="j" @change-hour="changeHour" xlClassA="hours-container" />
 		<!-- boxes con dettagli su temperatura -->
-		<div class="row" id="dboard-area">
-			<!-- col precipitazioni -->
-			<div class="col">
-				<div class="card ">
-					<h4>Precipitazioni</h4>
-					<div class="flexsec">
-						<div>
-							<div>{{ forecasts[i][j].pop }}<br>
-								{{ forecasts[i][j].rainMM }}</div>
-						</div>
-						<div v-if="forecasts[i][j].pop != '0%'"><font-awesome-icon :icon="['fas', 'droplet']" /></div>
-						<div v-else><font-awesome-icon :icon="['fas', 'droplet-slash']" />
-						</div>
-					</div>
-				</div>
-			</div>
-			<!-- col vento -->
-			<div class="col">
-				<div class="card ">
-					<h4>Vento</h4>
-					<div class="flexsec">
-						<div>
-							<div>{{ forecasts[i][j].windSpeed }}
-								<!-- <br>{{ forecasts[i][j].windDirection }} -->
-							</div>
-							<div class="mini-text">m/s</div>
-						</div>
-						<div>
-							<font-awesome-icon :icon="['fas', 'wind']" />
-						</div>
-					</div>
-				</div>
-			</div>
-			<!-- col umidità -->
-			<div class="col">
-				<div class="card">
-					<h4>Umidità</h4>
-					<div class="flexsec">
-						<div>{{ forecasts[i][j].humidity }}</div>
-						<div><font-awesome-icon :icon="['fas', 'gauge']" /></div>
-					</div>
-				</div>
-			</div>
-			<!-- col pressione -->
-			<div class="col">
-				<div class="card">
-					<h4>Pressione</h4>
-					<div class="flexsec">
-						<div>
-							<div>{{ forecasts[i][j].pressure }}</div>
-							<div class="mini-text">mbar</div>
-						</div>
-						<div><font-awesome-icon :icon="['fas', 'arrows-down-to-line']" /></div>
-					</div>
-				</div>
-			</div>
-		</div>
+		<AppBoxWeather :forecasts="forecasts" :i="i" :j="j" classA="row" idA="dboard-area" />
 	</div>
 </template>
