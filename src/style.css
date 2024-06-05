@@ -33,7 +33,7 @@ h2{
   margin: 2rem auto;
 }
 
-.container > * {
+.container > div > * {
   margin: 1rem 0;
 }
 
@@ -70,6 +70,11 @@ html::-webkit-scrollbar {
 .btn:hover{
   transform: scale(1.1);
   background-color: #75a82d;
+}
+
+.btn:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
 }
 
 /* Loader */
@@ -180,7 +185,20 @@ h1{
   text-align: center;
 }
 
+.hours .btn {
+  padding: 6px 10px;
+  border-radius: 12px;
+}
+
 .accordion-button{
 cursor: pointer;
-margin: 0.5rem 0;
+}
+
+.row{
+  row-gap: 1rem;
+}
+
+.col{
+  width: 50%;
+  text-align: center;
 }
