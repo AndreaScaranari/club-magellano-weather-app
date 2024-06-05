@@ -1,6 +1,7 @@
 <script>
 import axios from 'axios';
 import { store } from '../data/store';
+import AppHourSelection from '../components/AppHourSelection.vue';
 
 const apiKey = 'e74beaa658d90f730fa32959308941a4';
 const lat = 45.3097228;
@@ -9,6 +10,7 @@ const url = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${l
 
 export default {
 	name: 'DashboardPage',
+	components: { AppHourSelection },
 	data: () => ({
 		store,
 		is5DOpen: false,
@@ -111,9 +113,9 @@ export default {
 
 <template>
 	<div v-if="!store.isLoading">
-		<!-- Titolo pagina -->
+		<!-- titolo pagina -->
 		<h1>Previsioni Meteo: Lodi</h1>
-		<!-- Selettore data per mobile-->
+		<!-- selettore data per mobile-->
 		<h2 class="flexsec dates">
 			<button class="btn" @click="previousDay()" :disabled="i <= 0">
 				<font-awesome-icon :icon="['fas', 'angles-left']" /> </button>
@@ -121,7 +123,7 @@ export default {
 			<button class="btn" @click="nextDay()" :disabled="i >= 4"><font-awesome-icon
 					:icon="['fas', 'angles-right']" /></button>
 		</h2>
-		<!-- Selettore data tablet / fisso -->
+		<!-- selettore data tablet / fisso -->
 		<ul class="dates-md">
 			<li v-for="(forecast, index) in forecasts.slice(0, -1)" :key="index" @click="changeDay(index)">
 				<button class="btn" :disabled="i == index">
@@ -129,19 +131,15 @@ export default {
 				</button>
 			</li>
 		</ul>
-		<!-- Icona e main info -->
+		<!-- area centrale con icona, temp, ecc -->
 		<div class="flexsec main-temp">
-			<!-- Orari previsioni della giornata -->
-			<ul class="flexsec hours-container-xl">
-				<li class="hours hours-xl" v-for="(forecast, index) in forecasts[i]" :key="index"
-					@click="changeHour(index)">
-					<button class="btn" :disabled="j == index">{{
-						forecast.date.slice(12,
-							17) }}</button>
-				</li>
-			</ul>
+			<!-- orari previsioni della giornata -->
+			<AppHourSelection :forecasts="forecasts[i]" :j="j" @change-hour="changeHour" xlClassA="hours-container-xl"
+				xlClassB="hours-xl" />
+			<!-- icona meteo -->
 			<img :src="`https://openweathermap.org/img/wn/${forecasts[i][j].icon}@2x.png`" alt="Icona Meteo"
 				class="meteo-icon">
+			<!-- temperatura -->
 			<div class="weatemp">
 				<div class="temperature">{{ forecasts[i][j].temp }}</div>
 				<div class="weather">{{ forecasts[i][j].weather }}
@@ -173,7 +171,6 @@ export default {
 						<div class="flexsec">
 							<div>
 								<div>{{ forecasts[i][j].windSpeed }}
-									<!-- <br>{{ forecasts[i][j].windDirection }} -->
 								</div>
 								<div class="mini-text">m/s</div>
 							</div>
@@ -208,7 +205,7 @@ export default {
 				</div>
 			</div>
 		</div>
-		<!-- Previsioni a cinque giorni -->
+		<!-- previsioni a cinque giorni -->
 		<div class="five-d-f">
 			<div class="flexsec" @click="is5DOpen = !is5DOpen">
 				<span class="accordion-button btn ">Previsioni a 4 giorni
@@ -243,13 +240,8 @@ export default {
 				</tr>
 			</table>
 		</div>
-		<!-- Orari previsioni della giornata -->
-		<ul class="flexsec hours-container">
-			<li class="hours" v-for="(forecast, index) in forecasts[i]" :key="index" @click="changeHour(index)"><button
-					class="btn" :disabled="j == index">{{
-						forecast.date.slice(12,
-							17) }}</button></li>
-		</ul>
+		<!-- orari previsioni della giornata -->
+		<AppHourSelection :forecasts="forecasts[i]" :j="j" @change-hour="changeHour" xlClassA="hours-container" />
 		<!-- boxes con dettagli su temperatura -->
 		<div class="row" id="dboard-area">
 			<!-- col precipitazioni -->
