@@ -130,6 +130,15 @@ export default {
 		</ul>
 		<!-- Icona e main info -->
 		<div class="flexsec main-temp">
+			<!-- Orari previsioni della giornata -->
+			<ul class="flexsec hours-container-xl">
+				<li class="hours hours-xl" v-for="(forecast, index) in forecasts[i]" :key="index"
+					@click="changeHour(index)">
+					<button class="btn" :disabled="j == index">{{
+						forecast.date.slice(12,
+							17) }}</button>
+				</li>
+			</ul>
 			<img :src="`https://openweathermap.org/img/wn/${forecasts[i][j].icon}@2x.png`" alt="Icona Meteo"
 				class="meteo-icon">
 			<div class="weatemp">
@@ -205,6 +214,21 @@ export default {
 					<font-awesome-icon icon="chevron-down" /></span>
 			</div>
 			<table v-show="is5DOpen" class="accordion-table">
+				<tr v-for="(forecast, index) in forecasts.slice(1, 5)" :key="index" class="flexsbc">
+					<td class="w-20">
+						{{ forecast[0].date.slice(0, 5) }}
+					</td>
+					<td class="w-50">
+						{{ forecast[4].weather }}
+					</td>
+					<td class="w-30">
+						{{ forecast[4].max }} / {{ forecasts[1][4].min }}
+					</td>
+				</tr>
+			</table>
+		</div>
+		<div class="five-d-f-xl">
+			<table class="accordion-table-xl">
 				<tr v-for="(forecast, index) in forecasts.slice(1, 5)" :key="index" class="flexsbc">
 					<td class="w-20">
 						{{ forecast[0].date.slice(0, 5) }}

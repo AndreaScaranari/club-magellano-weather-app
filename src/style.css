@@ -236,7 +236,8 @@ h1{
 }
 
 /* Tutte le ore */
-.hours-container{
+.hours-container,
+.hours-container-xl{
   row-gap: 0.5rem;
   margin: 1.5rem 0;
 }
@@ -244,6 +245,15 @@ h1{
 .hours{
   width: 25%;
   text-align: center;
+}
+
+.hours-container-xl{
+  width: 20%;
+  display: none;
+}
+
+.hours-xl{
+  width: 50%;
 }
 
 .hours .btn {
@@ -260,12 +270,18 @@ h1{
   width: 100%;
 }
 
+.accordion-table-xl{
+  width: 50%;
+  margin: 0 auto;
+}
+
 td {
   padding: 0.4rem 0;
   color: black;
   border: 1px solid silver;
   text-align: center;
   margin-top: 0.5rem;
+  background-color: #F8F8F8;
 }
 
 td.w-20{
@@ -384,7 +400,7 @@ tr:hover {
 
 @media (min-width: 1200px) {
   .weatemp{
-    width: 25%;
+    width: 15%;
   }
 
   .container{
@@ -393,5 +409,25 @@ tr:hover {
 
   .meteo-icon{
     width: 15%;
+  }
+
+  .row-md{
+    width: 35%;
+  }
+
+  .hours-container{
+    display: none;
+  }
+
+  .hours-container-xl{
+    display: flex;
+  }
+
+  .five-d-f{
+    display: none;
+  }
+
+  .five-d-f-xl{
+    display: block;
   }
 }
