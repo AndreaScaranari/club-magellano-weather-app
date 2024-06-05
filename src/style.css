@@ -147,6 +147,15 @@ html::-webkit-scrollbar {
   }
 }
 
+/* 404 */
+.not-found{
+  height: calc(100vh - 327px - 64px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 /* Header */
 header,
 footer{
@@ -285,6 +294,10 @@ h1{
   margin: 0 auto;
 }
 
+.five-d-f-xl{
+  display: none;
+}
+
 td {
   padding: 0.4rem 0;
   color: black;
@@ -395,6 +408,10 @@ tr:hover {
   #dboard-area{
     display: none;
   }
+
+  .not-found{
+    font-size: 1.5rem;
+  }
 }
 
 
@@ -405,6 +422,10 @@ tr:hover {
 
   .header-text{
     display: inline-block;
+  }
+
+  .not-found{
+    font-size: 2rem;
   }
 }
 
@@ -439,5 +460,9 @@ tr:hover {
 
   .five-d-f-xl{
     display: block;
+  }
+
+  .not-found{
+    font-size: 2.5rem;
   }
 }
