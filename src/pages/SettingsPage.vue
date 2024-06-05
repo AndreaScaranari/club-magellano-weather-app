@@ -1,6 +1,12 @@
 <script>
+import { store } from '../data/store';
+
+
 export default {
-	name: 'SettingsPage'
+	name: 'SettingsPage',
+	data: () => ({
+		store,
+	})
 }
 </script>
 

@@ -129,12 +129,22 @@ html::-webkit-scrollbar {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
   z-index: 1;
+  font-size: 3rem;
 }
 
-.spinner-border {
-  width: 150px;
-  height: 150px;
+.fa-spinner{
+  font-size: 8rem;
+  animation: spin 1.2s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  } to {
+    transform: rotate(360deg);
+  }
 }
 
 /* Header */

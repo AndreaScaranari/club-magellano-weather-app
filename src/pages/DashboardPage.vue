@@ -1,5 +1,6 @@
 <script>
 import axios from 'axios';
+import { store } from '../data/store';
 
 const apiKey = 'e74beaa658d90f730fa32959308941a4';
 const lat = 45.3097228;
@@ -9,7 +10,7 @@ const url = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${l
 export default {
 	name: 'DashboardPage',
 	data: () => ({
-		isLoading: false,
+		store,
 		is5DOpen: false,
 		forecasts: [[]],
 		i: 0,
@@ -53,7 +54,7 @@ export default {
 		},
 		// chiamata axios con attivazione e disattivazione loader\
 		fetchWeather() {
-			this.isLoading = true;
+			store.isLoading = true;
 			axios.get(url)
 				.then(res => {
 					const data = res.data;
@@ -97,7 +98,7 @@ export default {
 				})
 				// chiudo il loader
 				.then(() => {
-					this.isLoading = false;
+					store.isLoading = false;
 				});
 		}
 	},
@@ -109,7 +110,7 @@ export default {
 </script>
 
 <template>
-	<div v-if="!isLoading">
+	<div v-if="!store.isLoading">
 		<!-- Titolo pagina -->
 		<h1>Previsioni Meteo: Lodi</h1>
 		<!-- Selettore data per mobile-->
