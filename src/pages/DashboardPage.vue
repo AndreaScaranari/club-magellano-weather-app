@@ -3,6 +3,7 @@ import axios from 'axios';
 import { store } from '../data/store';
 import AppHourSelection from '../components/AppHourSelection.vue';
 import AppBoxWeather from '../components/AppBoxWeather.vue';
+import AppFiveDF from '../components/AppFiveDF.vue';
 
 const apiKey = 'e74beaa658d90f730fa32959308941a4';
 const lat = 45.3097228;
@@ -11,7 +12,7 @@ const url = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${l
 
 export default {
 	name: 'DashboardPage',
-	components: { AppHourSelection, AppBoxWeather },
+	components: { AppHourSelection, AppBoxWeather, AppFiveDF },
 	data: () => ({
 		store,
 		is5DOpen: false,
@@ -150,39 +151,20 @@ export default {
 			<!-- boxes con dettagli su temperatura -->
 			<AppBoxWeather :forecasts="forecasts" :i="i" :j="j" classA="row-md" />
 		</div>
-		<!-- previsioni a cinque giorni -->
+		<!-- previsioni a cinque giorni con accordion -->
 		<div class="five-d-f">
 			<div class="flexsec" @click="is5DOpen = !is5DOpen">
 				<span class="accordion-button btn ">Previsioni a 4 giorni
 					<font-awesome-icon icon="chevron-down" /></span>
 			</div>
 			<table v-show="is5DOpen" class="accordion-table">
-				<tr v-for="(forecast, index) in forecasts.slice(1, 5)" :key="index" class="flexsbc">
-					<td class="w-20">
-						{{ forecast[0].date.slice(0, 5) }}
-					</td>
-					<td class="w-50">
-						{{ forecast[4].weather }}
-					</td>
-					<td class="w-30">
-						{{ forecast[4].max }} / {{ forecasts[1][4].min }}
-					</td>
-				</tr>
+				<AppFiveDF :forecasts="forecasts" />
 			</table>
 		</div>
+		<!-- previsioni a cinque giorni senza accordion -->
 		<div class="five-d-f-xl">
 			<table class="accordion-table-xl">
-				<tr v-for="(forecast, index) in forecasts.slice(1, 5)" :key="index" class="flexsbc">
-					<td class="w-20">
-						{{ forecast[0].date.slice(0, 5) }}
-					</td>
-					<td class="w-50">
-						{{ forecast[4].weather }}
-					</td>
-					<td class="w-30">
-						{{ forecast[4].max }} / {{ forecasts[1][4].min }}
-					</td>
-				</tr>
+				<AppFiveDF :forecasts="forecasts" />
 			</table>
 		</div>
 		<!-- orari previsioni della giornata -->
