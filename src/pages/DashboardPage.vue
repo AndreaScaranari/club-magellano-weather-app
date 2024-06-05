@@ -43,6 +43,9 @@ export default {
 				this.j = 0;
 			}
 		},
+		changeDay(index) {
+			this.i = index;
+		},
 		// cambia l'orario a cui le previsioni fanno riferimento
 		changeHour(index) {
 			this.j = index;
@@ -108,7 +111,7 @@ export default {
 	<div v-if="!isLoading">
 		<!-- Titolo pagina -->
 		<h1>Previsioni Meteo: Lodi</h1>
-		<!-- Selettore data -->
+		<!-- Selettore data per mobile-->
 		<h2 class="flexsec dates">
 			<button class="btn" @click="previousDay()" :disabled="i <= 0">
 				<font-awesome-icon :icon="['fas', 'angles-left']" /> </button>
@@ -116,6 +119,12 @@ export default {
 			<button class="btn" @click="nextDay()" :disabled="i >= 4"><font-awesome-icon
 					:icon="['fas', 'angles-right']" /></button>
 		</h2>
+		<!-- Selettore data tablet / fisso -->
+		<ul class="dates-md">
+			<li v-for="(forecast, i) in forecasts" :key="i" class="btn" @click="changeDay(i)">
+				<h2>{{ forecast[0].date.slice(0, 5) }}</h2>
+			</li>
+		</ul>
 		<!-- Icona e main info -->
 		<div class="flexsec main-temp">
 			<img :src="`https://openweathermap.org/img/wn/${forecasts[i][j].icon}@2x.png`" alt="Icona Meteo"
