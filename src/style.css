@@ -172,10 +172,17 @@ h1{
 
 .meteo-icon{
   width: 50%;
+  border: 3px solid silver;
+  border-radius: 15px;
+}
+
+.weatemp{
+  width: 50%;
 }
 
 .weatemp>*{
-  margin: 5px;
+  padding-left: 1rem;
+  margin: 0.5rem 0;
 }
 
 .temperature{
