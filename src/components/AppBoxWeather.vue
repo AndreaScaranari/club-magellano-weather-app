@@ -45,7 +45,7 @@ export default {
 		</div>
 		<!-- col vento -->
 		<div class="col">
-			<div class="card ">
+			<div class="card">
 				<h4>Vento</h4>
 				<div class="flexsec">
 					<div>
