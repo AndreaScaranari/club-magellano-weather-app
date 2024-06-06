@@ -6,6 +6,10 @@
 }
 
 /* Generics */
+body{
+  font-family: 'Satoshi', sans-serif;
+}
+
 main{
   min-height: calc(100vh - 327px - 64px);
 }
