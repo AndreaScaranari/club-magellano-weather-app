@@ -15,6 +15,7 @@ export default {
 	components: { AppHourSelection, AppBoxWeather, AppFiveDF },
 	data: () => ({
 		store,
+		city: "",
 		is5DOpen: false,
 		forecasts: [[]],
 		i: 0,
@@ -70,6 +71,8 @@ export default {
 			axios.get(url)
 				.then(res => {
 					const data = res.data;
+					// recupero la città
+					this.city = data.city.name;
 					// variabili che utilizzo per pushare gli oggetti ottenuti dal forEach nel giusto array (array che include solo oggetti con la stessa data) 
 					let i = 0;
 					let sameDay = data.list[i].dt_txt.slice(0, 10);
@@ -124,7 +127,7 @@ export default {
 <template>
 	<div v-if="!store.isLoading" class="wrapper">
 		<!-- titolo pagina -->
-		<h1>Previsioni Meteo: Lodi</h1>
+		<h1>Previsioni Meteo: {{ city }}</h1>
 		<!-- selettore data per mobile-->
 		<h2 class="flexsec dates">
 			<button class="btn" @click="previousDay()" :disabled="i <= 0">
