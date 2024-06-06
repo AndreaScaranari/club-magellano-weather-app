@@ -81,12 +81,6 @@ html::-webkit-scrollbar {
   cursor: pointer;
 }
 
-.btn:hover{
-  transform: scale(1.1);
-  color: white;
-  background-color: #858585;
-}
-
 .btn:disabled {
   background-color: #ccc;
   cursor: not-allowed;
@@ -357,10 +351,6 @@ tr:hover {
   transition: transform 0.3s ease;
 }
 
-.card:hover{
-  transform: scale(1.1);
-}
-
 .card .flexsec{
   gap: 5px;
 }
@@ -436,6 +426,17 @@ tr:hover {
   .not-found{
     font-size: 2rem;
   }
+
+  .card:hover{
+    transform: scale(1.1);
+  }
+
+  .btn:hover{
+    transform: scale(1.1);
+    color: white;
+    background-color: #858585;
+  }
+
 }
 
 @media (min-width: 1200px) {
