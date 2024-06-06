@@ -22,13 +22,13 @@ export default {
 
 <template>
     <tr v-for="(forecast, index) in forecasts.slice(1, 5)" :key="index" class="flexsbc">
-        <td class="w-20">
+        <td>
             {{ forecast[0].date.slice(0, 5) }}
         </td>
-        <td class="w-50">
+        <td>
             {{ forecast[4].weather }}
         </td>
-        <td class="w-30">
+        <td>
             {{ findDailyMax(index) }} / {{ findDailyMin(index) }}
         </td>
     </tr>
