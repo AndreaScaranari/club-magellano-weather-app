@@ -313,10 +313,6 @@ tr{
   transition: transform 0.5s ease;
 }
 
-tr:hover {
-  transform: scale(1.05);
-}
-
 /* dashboard cards */
 #dboard-area{
   display: flex;
@@ -437,6 +433,9 @@ tr:hover {
     background-color: #858585;
   }
 
+  tr:hover {
+    transform: scale(1.05);
+  }
 }
 
 @media (min-width: 1200px) {
