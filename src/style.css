@@ -412,6 +412,10 @@ tr:hover {
   .not-found{
     font-size: 1.5rem;
   }
+
+  .hours-container{
+    justify-content: start;
+  }
 }
 
 
@@ -452,6 +456,7 @@ tr:hover {
 
   .hours-container-xl{
     display: flex;
+    justify-content: start;
   }
 
   .five-d-f{
