@@ -8,9 +8,14 @@ export default {
         }
     },
     methods: {
-        changeHour(index) {
-            this.$emit('change-hour', index);
-        }
+        findDailyMax(i) {
+            const maxArray = this.forecasts[i].map(forecast => parseInt(forecast.max.slice(0, -1)));
+            return Math.max(...maxArray) + "°";
+        },
+        findDailyMin(i) {
+            const minArray = this.forecasts[i].map(forecast => parseInt(forecast.min.slice(0, -1)));
+            return Math.min(...minArray) + "°";
+        },
     }
 }
 </script>
@@ -24,7 +29,7 @@ export default {
             {{ forecast[4].weather }}
         </td>
         <td class="w-30">
-            {{ forecast[4].max }} / {{ forecast[1].min }}
+            {{ findDailyMax(index) }} / {{ findDailyMin(index) }}
         </td>
     </tr>
 </template>

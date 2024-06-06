@@ -56,6 +56,14 @@ export default {
 		changeHour(index) {
 			this.j = index;
 		},
+		findDailyMax(i) {
+			const maxArray = this.forecasts[i].map(forecast => parseInt(forecast.max.slice(0, -1)));
+			return Math.max(...maxArray) + "°";
+		},
+		findDailyMin(i) {
+			const minArray = this.forecasts[i].map(forecast => parseInt(forecast.min.slice(0, -1)));
+			return Math.min(...minArray) + "°";
+		},
 		// chiamata axios con attivazione e disattivazione loader\
 		fetchWeather() {
 			store.isLoading = true;
@@ -127,7 +135,7 @@ export default {
 		</h2>
 		<!-- selettore data tablet / fisso -->
 		<ul class="dates-md">
-			<li v-for="(forecast, index) in forecasts.slice(0, -1)" :key="index" @click="changeDay(index)">
+			<li v-for="(forecast, index) in forecasts.slice(0, 5)" :key="index" @click="changeDay(index)">
 				<button class="btn" :disabled="i == index">
 					<h2>{{ forecast[0].date.slice(0, 5) }}</h2>
 				</button>
@@ -146,7 +154,7 @@ export default {
 				<div class="temperature">{{ forecasts[i][j].temp }}</div>
 				<div class="weather">{{ forecasts[i][j].weather }}
 				</div>
-				<div class="max-min">{{ forecasts[i][j].max }} / {{ forecasts[i][j].min }}</div>
+				<div class="max-min">{{ findDailyMax(i) }} / {{ findDailyMin(i) }}</div>
 			</div>
 			<!-- boxes con dettagli su temperatura -->
 			<AppBoxWeather :forecasts="forecasts" :i="i" :j="j" classA="row-md" />
